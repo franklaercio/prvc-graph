@@ -11,8 +11,8 @@
 
 ```shell
 # Clone this repository
-$ git clone <https://github.com/franklaercio/clarke-wrigths.git>
+$ git clone <https://github.com/franklaercio/prvc-graph.git>
 
 # Go to the directory
-$ cd clarke-wrigths
+$ cd prvc-graph
 ```
