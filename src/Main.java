@@ -41,9 +41,9 @@ public class Main {
 
     for (Route route : routes) {
       for (Customer customer : route.getRoutes()) {
-        System.out.print(customer.getX() + " -> " + customer.getY() + " -> " + customer.getCapacity());
+        System.out.print("(" + customer.getX() + ", " + customer.getY() + ") ");
       }
-      System.out.println("");
+      System.out.println("with total cost: " + route.getCapacity());
     }
   }
 }
