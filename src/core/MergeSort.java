@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import domain.Node;
-import usecases.MergeSortUseCase;
 
 /**
  * This class sort a list of nodes with the MergeSort algorithm.
@@ -16,14 +15,14 @@ import usecases.MergeSortUseCase;
  *
  * @author Frank Laércio
  */
-public class MergeSort implements MergeSortUseCase {
+public class MergeSort {
 
   /**
    * Method to sort a list of nodes.
    *
    * @param nodes nodes to sort.
    */
-  public void sorterSavings(List<Node> nodes) {
+  public static void sorterSavings(List<Node> nodes) {
     mergeSort(nodes, 0, nodes.size() - 1);
   }
 
@@ -36,7 +35,7 @@ public class MergeSort implements MergeSortUseCase {
    * @param start point to start.
    * @param end   point to end.
    */
-  private void mergeSort(List<Node> nodes, int start, int end) {
+  private static void mergeSort(List<Node> nodes, int start, int end) {
     // Stop condition
     if (start >= end) {
       return;
@@ -61,7 +60,7 @@ public class MergeSort implements MergeSortUseCase {
    * @param start start index.
    * @param end   end index.
    */
-  private void merge(List<Node> nodes, int start, int middle, int end) {
+  private static void merge(List<Node> nodes, int start, int middle, int end) {
     int lengthLeft = middle - start + 1;
     int lengthRight = end - middle;
 

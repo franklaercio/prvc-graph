@@ -1,7 +1,7 @@
-import java.util.ArrayList;
 import java.util.List;
 
 import core.ClarkeWright;
+import core.FileUtil;
 import core.MergeSort;
 import domain.Customer;
 import domain.Node;
@@ -26,29 +26,22 @@ import domain.Route;
 public class Main {
 
   public static void main(String[] args) {
+    String filePathName = args[0];
 
-    ClarkeWright clarkeWright = new ClarkeWright();
-    MergeSort mergeSort = new MergeSort();
+    List<Customer> customers = FileUtil.readCustomersFromCSV(filePathName);
 
-    Customer deposit = new Customer(250, 250, 50);
+    Customer deposit = customers.get(0);
+    customers.remove(deposit);
 
-    List<Customer> customers = new ArrayList<Customer>();
-    customers.add(new Customer(200, 200, 20));
-    customers.add(new Customer(250, 150, 20));
-    customers.add(new Customer(300, 200, 10));
-    customers.add(new Customer(200, 300, 20));
-    customers.add(new Customer(250, 350, 20));
-    customers.add(new Customer(300, 300, 10));
+    List<Node> nodes = ClarkeWright.createInitialRoutes(deposit, customers);
 
-    List<Node> nodes = clarkeWright.createInitialRoutes(deposit, customers);
+    MergeSort.sorterSavings(nodes);
 
-    mergeSort.sorterSavings(nodes);
-
-    List<Route> routes = clarkeWright.mergeRoutes(deposit, nodes);
+    List<Route> routes = ClarkeWright.mergeRoutes(deposit, nodes);
 
     for (Route route : routes) {
       for (Customer customer : route.getRoutes()) {
-        System.out.print(customer.getX() + ":" + customer.getY() + " -> ");
+        System.out.print(customer.getX() + " -> " + customer.getY() + " -> " + customer.getCapacity());
       }
       System.out.println("");
     }

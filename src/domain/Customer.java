@@ -11,12 +11,6 @@ import java.awt.geom.Point2D;
  */
 public class Customer extends Point2D.Double {
 
-  /** Point x of distance. */
-  private double x;
-
-  /** Point y of distance. */
-  private double y;
-
   /** Capacity of customer. */
   private int capacity;
 

@@ -6,7 +6,6 @@ import java.util.List;
 import domain.Customer;
 import domain.Node;
 import domain.Route;
-import usecases.ClarkeWrightUseCase;
 
 /**
  * This is the heuristic scan of Clarke and Wrights to calculate the routing of
@@ -20,7 +19,7 @@ import usecases.ClarkeWrightUseCase;
  *
  * @author Frank Laércio
  */
-public class ClarkeWright implements ClarkeWrightUseCase {
+public class ClarkeWright {
 
   /**
    * Method to create a initial routes in Clarke and Wrights algorithm. <br>
@@ -29,8 +28,7 @@ public class ClarkeWright implements ClarkeWrightUseCase {
    * @param deposit   deposit using by calculate the distance of customer.
    * @param customers list of customers loaded.
    */
-  @Override
-  public List<Node> createInitialRoutes(Customer deposit, List<Customer> customers) {
+  public static List<Node> createInitialRoutes(Customer deposit, List<Customer> customers) {
     ArrayList<Node> nodes = new ArrayList<>();
 
     for (int i = 0; i < customers.size(); i++) {
@@ -54,8 +52,7 @@ public class ClarkeWright implements ClarkeWrightUseCase {
    * @param nodes   list of nodes.
    * @return list of merged routes.
    */
-  @Override
-  public List<Route> mergeRoutes(Customer deposit, List<Node> nodes) {
+  public static List<Route> mergeRoutes(Customer deposit, List<Node> nodes) {
     List<Route> savingRoutes = new ArrayList<>();
 
     for (Node node : nodes) {
@@ -82,7 +79,7 @@ public class ClarkeWright implements ClarkeWrightUseCase {
    * @param savingRoutes routes savings.
    * @return customer contains in the savings routes.
    */
-  private boolean containsCustomer(Customer customer, List<Route> savingRoutes) {
+  private static boolean containsCustomer(Customer customer, List<Route> savingRoutes) {
     for (Route route : savingRoutes) {
       for (Customer customerInList : route.getRoutes()) {
         if (customer.equals(customerInList)) {
